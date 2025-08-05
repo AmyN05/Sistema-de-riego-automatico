@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Sistema de Riego Automatizado</title>
+<style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #e6f2ff;
+      color: #004d00;
+      margin: 0;
+      padding: 0 20px;
+    }
+    header {
+      background-color: #007acc;
+      color: white;
+      padding: 20px 0;
+      text-align: center;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    h1 {
+      margin: 0;
+      font-size: 2.5em;
+    }
+    section {
+      margin: 30px 0;
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    h2 {
+      color: #004d00;
+      border-bottom: 2px solid #007acc;
+      padding-bottom: 5px;
+    }
+    form {
+      max-width: 400px;
+      margin-top: 20px;
+    }
+    label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: bold;
+    }
+    input, select, button {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 15px;
+      border: 1px solid #007acc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+    button {
+      background-color: #007acc;
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-size: 1em;
+    }
+    button:hover {
+      background-color: #005f99;
+    }
+    footer {
+      text-align: center;
+      padding: 15px 0;
+      background: #007acc;
+      color: white;
+      margin-top: 40px;
+      font-size: 0.9em;
+    }
+</style>
+</head>
+<body>
+<header>
+<h1>Sistema de Riego Automatizado</h1>
+</header>
+ 
+  <section>
+<h2>¿Qué es un sistema de riego automatizado?</h2>
+<p>
+      Un sistema de riego automatizado controla el suministro de agua a tus plantas o cultivos de manera eficiente, 
+      programando horarios y ajustando la cantidad de agua según las necesidades, para ahorrar recursos y optimizar el crecimiento.
+</p>
+</section>
+ 
+  <section>
+<h2>Características principales</h2>
+<ul>
+<li>Programación automática de horarios de riego.</li>
+<li>Control remoto vía aplicación móvil o web.</li>
+<li>Sensor de humedad para ajustar el riego en tiempo real.</li>
+<li>Alertas y reportes de consumo de agua.</li>
+</ul>
+</section>
+ 
+  <section>
+<h2>Configura tu sistema</h2>
+<form id="riegoForm">
+<label for="horario">Horario de riego:</label>
+<input type="time" id="horario" name="horario" required />
+ 
+      <label for="duracion">Duración (minutos):</label>
+<input type="number" id="duracion" name="duracion" min="1" max="120" required />
+ 
+      <label for="zona">Zona de riego:</label>
+<select id="zona" name="zona" required>
+<option value="">Selecciona una zona</option>
+<option value="jardin">Jardín</option>
+<option value="huerto">Huerto</option>
+<option value="macetas">Macetas</option>
+</select>
+ 
+      <button type="submit">Guardar configuración</button>
+</form>
+<p id="mensaje" style="color:green; font-weight:bold;"></p>
+</section>
+ 
+  <footer>
+&copy; 2025 Sistema de Riego Automatizado
+</footer>
+ 
+  <script>
+    const form = document.getElementById('riegoForm');
+    const mensaje = document.getElementById('mensaje');
+ 
+    form.addEventListener('submit', function(event) {
+      event.preventDefault();
+      const horario = form.horario.value;
+      const duracion = form.duracion.value;
+      const zona = form.zona.value;
+ 
+      if (horario && duracion && zona) {
+        mensaje.textContent = `Configuración guardada: Riego a las ${horario} durante ${duracion} minutos en la zona ${zona}.`;
+        form.reset();
+      } else {
+        mensaje.textContent = '';
+      }
+    });
+</script>
+</body>
+</html>
